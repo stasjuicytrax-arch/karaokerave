@@ -7,3 +7,9 @@
 .viewer-image[hidden]{display:none}
 
 @media(max-width:600px){.brand{width:clamp(116px,40vw,158px)}nav{gap:clamp(12px,4vw,20px);font-size:clamp(18px,5vw,20px)}}
+
+.photo-reports{display:flex;flex-wrap:wrap;gap:16px;margin-top:36px}
+.report-link{display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:56px;padding:16px 24px;border:1px solid var(--red);background:var(--red);color:var(--paper);font-size:22px;line-height:1.25;transition:background .18s,border-color .18s}
+.report-link svg{width:20px;height:20px;flex-shrink:0}
+.report-link:hover{background:#bc1016;border-color:#bc1016}
+@media(max-width:600px){.photo-reports{flex-direction:column;margin-top:24px;gap:12px}.report-link{font-size:20px;padding:16px 20px}}
