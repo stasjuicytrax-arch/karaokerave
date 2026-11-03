@@ -39,3 +39,9 @@ dialog.addEventListener('keydown', event => {
 dialog.addEventListener('click', event => { if (event.target === dialog) close(); });
 dialog.addEventListener('close', () => { image.removeAttribute('src'); opener?.focus({preventScroll:true}); });
 image.addEventListener('error', () => { image.hidden = true; error.hidden = false; });
+
+if (links.length < 2) {
+  dialog.querySelector(".viewer-prev").hidden = true;
+  dialog.querySelector(".viewer-next").hidden = true;
+  counter.hidden = true;
+}

@@ -13,3 +13,5 @@
 .report-link svg{width:20px;height:20px;flex-shrink:0}
 .report-link:hover{background:#bc1016;border-color:#bc1016}
 @media(max-width:600px){.photo-reports{flex-direction:column;margin-top:24px;gap:12px}.report-link{font-size:20px;padding:16px 20px}}
+
+.viewer [hidden]{display:none}
