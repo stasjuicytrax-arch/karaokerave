@@ -16,12 +16,12 @@
   <link rel="icon" href="./assets/karaoke-rave-steel-mark.svg" type="image/svg+xml">
   <link rel="preload" href="./preview/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./preview/type.css">
-  <link rel="stylesheet" href="./preview/preview.css?v=january-event">
+  <link rel="stylesheet" href="./preview/preview.css?v=step-icons">
   <script src="./gallery.js?v=photo-report" defer></script>
   <script src="./preview/booking.js" defer></script>
   <script type="module" src="./preview/accents.mjs?v=stage-pulse"></script>
   <script type="module" src="./preview/stage-pulse.mjs"></script>
-  <script src="./preview/motion.js?v=orchestra-stage" defer></script>
+  <script src="./preview/motion.js?v=step-icons" defer></script>
 </head>
 <body id="top">
   <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -32,8 +32,6 @@
     <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
     <symbol id="prev" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
     <symbol id="next" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
-    <symbol id="record" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3"/><path d="M16 8a8 8 0 0 0-8 8m8 8a8 8 0 0 0 8-8"/></symbol>
-    <symbol id="lyrics" viewBox="0 0 32 32"><path d="M4 6h24v17H4zM11 27h10M9 12h14M9 17h5m3 0h6"/></symbol>
     <symbol id="chorus" viewBox="0 0 32 32"><circle cx="16" cy="10" r="4"/><path d="M9 26v-3a7 7 0 0 1 14 0v3M7 8a3.5 3.5 0 0 0 0 7m18-7a3.5 3.5 0 0 1 0 7M3 25v-2a5 5 0 0 1 3-4m23 6v-2a5 5 0 0 0-3-4"/></symbol>
     <symbol id="signal" viewBox="0 0 32 32"><path d="M4 13v6m6-11v16m6-21v26m6-21v16m6-11v6"/></symbol>
     <symbol id="ticket" viewBox="0 0 32 32"><path d="M4 8h24v5a3 3 0 0 0 0 6v5H4v-5a3 3 0 0 0 0-6zM21 9v3m0 3v2m0 3v3"/></symbol>
@@ -130,9 +128,38 @@
         </div>
         <div class="format-program">
           <ol class="steps" role="list">
-            <li data-reveal><span class="step-icon" aria-hidden="true"><svg class="icon"><use href="#record"/></svg></span><span class="step-index" aria-hidden="true">01</span><div><h3>Знакомые песни</h3><p>Подбираем популярные хиты, которые знают и&nbsp;любят разные поколения.</p></div></li>
-            <li data-reveal><span class="step-icon" aria-hidden="true"><svg class="icon"><use href="#lyrics"/></svg></span><span class="step-index" aria-hidden="true">02</span><div><h3>Живое исполнение</h3><p>Оркестр играет, а&nbsp;на&nbsp;большом экране появляются тексты песен.</p></div></li>
-            <li data-reveal><span class="step-icon" aria-hidden="true"><svg class="icon"><use href="#chorus"/></svg></span><span class="step-index" aria-hidden="true">03</span><div><h3>Поёт весь зал</h3><p>Подхватывай знакомые слова и&nbsp;пой вместе со&nbsp;всем залом.</p></div></li>
+            <li data-reveal>
+              <span class="step-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 32 32">
+                  <circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3"/>
+                  <g class="step-record"><path d="M16 8a8 8 0 0 0-8 8m8 8a8 8 0 0 0 8-8"/></g>
+                </svg>
+              </span>
+              <span class="step-index" aria-hidden="true">01</span>
+              <div><h3>Знакомые песни</h3><p>Подбираем популярные хиты, которые знают и&nbsp;любят разные поколения.</p></div>
+            </li>
+            <li data-reveal>
+              <span class="step-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 32 32">
+                  <path d="M4 6h24v17H4zM11 27h10"/>
+                  <g class="step-lyric"><path d="M9 12h14"/></g>
+                  <g class="step-lyric"><path d="M9 17h5m3 0h6"/></g>
+                </svg>
+              </span>
+              <span class="step-index" aria-hidden="true">02</span>
+              <div><h3>Живое исполнение</h3><p>Оркестр играет, а&nbsp;на&nbsp;большом экране появляются тексты песен.</p></div>
+            </li>
+            <li data-reveal>
+              <span class="step-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 32 32">
+                  <g class="step-singer"><path d="M7 8a3.5 3.5 0 0 0 0 7M3 25v-2a5 5 0 0 1 3-4"/></g>
+                  <g class="step-singer"><circle cx="16" cy="10" r="4"/><path d="M9 26v-3a7 7 0 0 1 14 0v3"/></g>
+                  <g class="step-singer"><path d="M25 8a3.5 3.5 0 0 1 0 7M29 25v-2a5 5 0 0 0-3-4"/></g>
+                </svg>
+              </span>
+              <span class="step-index" aria-hidden="true">03</span>
+              <div><h3>Поёт весь зал</h3><p>Подхватывай знакомые слова и&nbsp;пой вместе со&nbsp;всем залом.</p></div>
+            </li>
           </ol>
         </div>
       </div>
