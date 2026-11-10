@@ -10,11 +10,12 @@
   <link rel="icon" href="../assets/karaoke-rave.svg" type="image/svg+xml">
   <link rel="preload" href="./inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./type.css">
-  <link rel="stylesheet" href="./preview.css?v=live-ticket">
+  <link rel="stylesheet" href="./preview.css?v=encore">
   <script src="../gallery.js" defer></script>
   <script src="./booking.js" defer></script>
-  <script type="module" src="./stage.mjs?v=live-ticket"></script>
-  <script src="./motion.js?v=live-ticket" defer></script>
+  <script type="module" src="./stage.mjs?v=encore"></script>
+  <script type="module" src="./accents.mjs?v=encore"></script>
+  <script src="./motion.js?v=encore" defer></script>
 </head>
 <body id="top">
   <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -30,6 +31,11 @@
     <symbol id="signal" viewBox="0 0 32 32"><path d="M4 13v6m6-11v16m6-21v26m6-21v16m6-11v6"/></symbol>
     <symbol id="ticket" viewBox="0 0 32 32"><path d="M4 8h24v5a3 3 0 0 0 0 6v5H4v-5a3 3 0 0 0 0-6zM21 9v3m0 3v2m0 3v3"/></symbol>
     <symbol id="frame" viewBox="0 0 32 32"><path d="M4 12V4h8m8 0h8v8m0 8v8h-8m-8 0H4v-8"/><circle cx="16" cy="16" r="4"/></symbol>
+    <symbol id="burger" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2a14 14 0 0 1-7-7l2-2z"/></symbol>
+    <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="vk" viewBox="0 0 24 24"><path d="M3 7c.8 6.4 4.1 10 10 10h1v-4c2 .2 3.4 1.7 4.5 4H22c-1.2-2.6-2.8-4.4-4.5-5.3C19 10.6 20.6 8.8 21 7h-3.2c-.7 1.9-2 3.3-3.8 4V7h-3v6.7C9.3 13 7.5 10.5 7 7z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01" stroke-linecap="round" stroke-width="2.7"/></symbol>
   </svg>
   <svg class="glass-filter" width="0" height="0" aria-hidden="true" focusable="false">
     <filter id="liquid-menu" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
@@ -42,14 +48,35 @@
     <a class="brand" href="#top" aria-label="Караоке Рейв — начало страницы">
       <img src="../assets/karaoke-rave.svg" width="2160" height="1220" alt="" translate="no">
     </a>
-    <nav class="nav" id="menu" aria-label="Разделы сайта">
+    <nav class="nav" aria-label="Разделы сайта">
       <a href="#afisha">Афиша</a>
       <a href="#photos">Фото</a>
       <a href="#booking">Организаторам</a>
     </nav>
     <a class="button button--small button--outline header-ticket" href="#afisha">Билеты <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
-    <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-haspopup="dialog" aria-controls="mobile-menu"><svg class="icon" aria-hidden="true"><use href="#burger"/></svg></button>
   </header>
+
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Меню">
+    <div class="mobile-menu-top">
+      <a class="brand" href="#top" aria-label="Караоке Рейв — начало страницы"><img src="../assets/karaoke-rave.svg" width="2160" height="1220" alt=""></a>
+      <form method="dialog"><button class="mobile-menu-close" type="submit" aria-label="Закрыть меню" autofocus><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button></form>
+    </div>
+    <nav class="mobile-menu-links" aria-label="Разделы сайта">
+      <a href="#afisha">Афиша <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+      <a href="#photos">Фото <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+      <a href="#booking">Организаторам <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+      <a href="#contacts">Контакты <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+    </nav>
+    <a class="button button--red mobile-menu-ticket" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+    <div class="mobile-menu-contacts">
+      <a class="contact-link" href="tel:+79194459601"><svg class="icon" aria-hidden="true"><use href="#phone"/></svg> +7 (919) 445-96-01</a>
+      <div class="socials">
+        <a class="contact-link" href="https://vk.ru/karaokeraveperm"><svg class="icon" aria-hidden="true"><use href="#vk"/></svg> ВКонтакте</a>
+        <a class="contact-link" href="https://www.instagram.com/karaoke_rave/" translate="no"><svg class="icon" aria-hidden="true"><use href="#instagram"/></svg> Instagram</a>
+      </div>
+    </div>
+  </dialog>
 
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
@@ -126,7 +153,12 @@
 
     <section class="section paper events" id="afisha" aria-labelledby="events-title">
       <div class="wrap">
-        <div class="section-heading" data-reveal><h2 id="events-title">Ближайшие события</h2><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg></div>
+        <div class="section-heading" data-reveal>
+          <h2 id="events-title">Ближайшие события</h2>
+          <span class="scene-accent scene-accent--ticket" data-accent="ticket" aria-hidden="true">
+            <svg class="icon"><use href="#ticket"/></svg><canvas></canvas>
+          </span>
+        </div>
         <article class="event-ticket" aria-labelledby="event-title" data-reveal="side">
           <div class="event-main">
             <div class="event-art">
@@ -207,10 +239,13 @@
   <footer class="section footer" id="contacts" aria-labelledby="contacts-title">
     <div class="wrap">
       <div class="section-heading" data-reveal="side">
+        <span class="scene-accent scene-accent--equalizer" data-accent="equalizer" aria-hidden="true">
+          <svg class="icon equalizer" viewBox="0 0 32 32">
+            <path d="M4 13v6"/><path d="M10 8v16"/><path d="M16 3v26"/><path d="M22 8v16"/><path d="M28 13v6"/>
+          </svg>
+          <canvas></canvas>
+        </span>
         <h2 id="contacts-title">Стань частью<br>Караоке Рейв</h2>
-        <svg class="icon equalizer" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M4 13v6"/><path d="M10 8v16"/><path d="M16 3v26"/><path d="M22 8v16"/><path d="M28 13v6"/>
-        </svg>
       </div>
       <div class="actions" data-reveal>
         <a class="button button--red" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
@@ -219,12 +254,12 @@
       <div class="footer-bottom" data-reveal>
         <a class="brand" href="#top" aria-label="Караоке Рейв — начало страницы"><img src="../assets/karaoke-rave.svg" width="2160" height="1220" alt=""></a>
         <address>
-          <a href="tel:+79194459601">+7 (919) 445-96-01</a>
-          <a href="mailto:stas.toropov2015@yandex.ru">stas.toropov2015@yandex.ru</a>
+          <a class="contact-link" href="tel:+79194459601"><svg class="icon" aria-hidden="true"><use href="#phone"/></svg> +7 (919) 445-96-01</a>
+          <a class="contact-link" href="mailto:stas.toropov2015@yandex.ru"><svg class="icon" aria-hidden="true"><use href="#mail"/></svg> stas.toropov2015@yandex.ru</a>
         </address>
         <div class="socials">
-          <a href="https://vk.ru/karaokeraveperm">ВКонтакте <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
-          <a href="https://www.instagram.com/karaoke_rave/" translate="no">Instagram <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
+          <a class="contact-link" href="https://vk.ru/karaokeraveperm"><svg class="icon" aria-hidden="true"><use href="#vk"/></svg> ВКонтакте</a>
+          <a class="contact-link" href="https://www.instagram.com/karaoke_rave/" translate="no"><svg class="icon" aria-hidden="true"><use href="#instagram"/></svg> Instagram</a>
         </div>
       </div>
     </div>

@@ -1,25 +1,22 @@
 const header = document.querySelector('.header');
 const menuToggle = header.querySelector('.nav-toggle');
+const mobileMenu = document.querySelector('#mobile-menu');
 
-function setMenuOpen(open) {
-  header.toggleAttribute('data-menu-open', open);
-  menuToggle.setAttribute('aria-expanded', String(open));
+if (typeof mobileMenu.showModal === 'function') {
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.showModal();
+    menuToggle.setAttribute('aria-expanded', 'true');
+  });
+  mobileMenu.addEventListener('close', () => menuToggle.setAttribute('aria-expanded', 'false'));
+  mobileMenu.addEventListener('click', event => {
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (event.target.closest('a[href^="#"]')) mobileMenu.close();
+  });
+  matchMedia('(max-width: 680px)').addEventListener('change', ({ matches }) => {
+    if (!matches && mobileMenu.open) mobileMenu.close();
+  });
+  header.setAttribute('data-menu-ready', '');
 }
-
-menuToggle.addEventListener('click', () => setMenuOpen(!header.hasAttribute('data-menu-open')));
-header.querySelector('.nav').addEventListener('click', event => {
-  if (event.target.closest('a')) setMenuOpen(false);
-});
-document.addEventListener('pointerdown', event => {
-  if (!header.contains(event.target)) setMenuOpen(false);
-});
-document.addEventListener('keydown', event => {
-  if (event.key !== 'Escape' || !header.hasAttribute('data-menu-open')) return;
-  setMenuOpen(false);
-  menuToggle.focus();
-});
-matchMedia('(max-width: 680px)').addEventListener('change', () => setMenuOpen(false));
-header.setAttribute('data-menu-ready', '');
 
 // Same edge refraction as the DIGITAL-EVENTS menu, with a blur fallback in other engines.
 if (/Chrome\/|Edg\//.test(navigator.userAgent) && CSS.supports('backdrop-filter', 'url(#liquid-menu)')) {
@@ -68,8 +65,8 @@ const posterHero = document.querySelector('.hero');
 const posterStage = posterHero.querySelector('.hero-object');
 posterHero.addEventListener('pointermove', event => {
   if (event.pointerType === 'touch' || posterStage.hasAttribute('data-live') || !motion.matches) return;
-  posterStage.style.setProperty('--poster-x', `${(event.clientX / innerWidth - .5) * 42}px`);
-  posterStage.style.setProperty('--poster-y', `${(event.clientY / innerHeight - .5) * 26}px`);
+  posterStage.style.setProperty('--poster-x', `${(event.clientX / innerWidth - .5) * 24}px`);
+  posterStage.style.setProperty('--poster-y', `${(event.clientY / innerHeight - .5) * 14}px`);
 }, { passive: true });
 posterHero.addEventListener('pointerleave', () => {
   posterStage.style.removeProperty('--poster-x');

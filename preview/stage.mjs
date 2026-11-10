@@ -118,6 +118,7 @@ async function start() {
   lightStage(THREE, scene);
   const microphone = createMicrophone(THREE, scene);
   const pointer = new THREE.Vector2();
+  const easedPointer = new THREE.Vector2();
   const current = new THREE.Vector2();
   let elapsed = 0;
   let previousFrame = null;
@@ -126,9 +127,13 @@ async function start() {
   let lost = false;
 
   function render() {
-    microphone.rotation.set(-.14 + current.y * .28, -.24 + current.x * .56 + Math.sin(elapsed * .78) * .19, -.41 + current.x * .12 + Math.sin(elapsed * .9) * .065);
-    microphone.position.x = current.x * .32 + Math.sin(elapsed * .73) * .13;
-    microphone.position.y = .12 - current.y * .22 + Math.sin(elapsed * 1.3) * .23;
+    microphone.rotation.set(
+      -.14 + current.y * .16,
+      -.24 + current.x * .32 + Math.sin(elapsed * .78) * .19,
+      -.41 + current.x * .065 + Math.sin(elapsed * .9) * .065,
+    );
+    microphone.position.x = current.x * .18 + Math.sin(elapsed * .73) * .13;
+    microphone.position.y = .12 - current.y * .12 + Math.sin(elapsed * 1.3) * .23;
     renderer.render(scene, camera);
   }
 
@@ -156,7 +161,10 @@ async function start() {
       const dt = Math.min(interval / 1000, .065);
       elapsed += dt;
       previousFrame = now;
-      current.lerp(pointer, 1 - Math.exp(-dt * 7));
+      // Two passes soften the initial acceleration and the return to rest.
+      const follow = 1 - Math.exp(-dt * 5.5);
+      easedPointer.lerp(pointer, follow);
+      current.lerp(easedPointer, follow);
       render();
     }
     frame = requestAnimationFrame(tick);
