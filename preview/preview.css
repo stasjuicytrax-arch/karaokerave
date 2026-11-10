@@ -75,13 +75,10 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .button--small { --cut: 12px; min-height: 46px; padding: 10px 15px; font-size: .875rem; }
 .button--red { --button-fill: var(--action); color: white; }
 .button--red:hover { --button-fill: var(--ink); color: var(--night); }
-.button--dark { --button-fill: var(--night); color: var(--ink); }
-.button--dark:hover { --button-fill: var(--action); color: white; }
 .button--outline { --button-line: #8f827e; }
 .button--outline:hover { --button-fill: var(--ink); --button-line: var(--ink); color: var(--night); }
 .button--unavailable { --button-fill: var(--panel); --button-line: var(--line); color: var(--muted); cursor: default; }
-.button--red:focus-visible, .button--dark:focus-visible { outline-color: var(--red); }
-.paper .button--dark:focus-visible { outline-color: var(--night); }
+.button--red:focus-visible { outline-color: var(--red); }
 .text-link { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; font-weight: 650; }
 .text-link:hover, .nav a:hover, .footer-bottom a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
 
@@ -189,7 +186,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .format-photo figcaption { position: absolute; bottom: 0; right: 0; display: flex; align-items: center; gap: 9px; padding: 10px 16px; background: var(--night); color: var(--ink); font: 800 1rem/1 var(--display); letter-spacing: .09em; text-transform: uppercase; }
 .format-photo figcaption .icon { color: var(--red); width: 18px; height: 18px; }
 .format-program { margin-top: clamp(25px, 5vw, 66px); }
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 3vw, 44px); list-style: none; margin: 0 0 26px; padding: 0; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 3vw, 44px); list-style: none; margin: 0; padding: 0; }
 .steps li { display: grid; grid-template-columns: 1fr auto; gap: 11px; align-items: center; padding-block: 15px 5px; border-top: 1px solid #8d7d77; }
 .steps li > div { grid-column: 1 / -1; align-self: start; }
 .step-icon { display: grid; place-items: center; width: clamp(42px, 5vw, 67px); aspect-ratio: 1; background: var(--red); color: white; clip-path: polygon(0 0, 77% 0, 100% 23%, 100% 100%, 0 100%); }
@@ -203,7 +200,6 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .experience-photo { position: absolute; z-index: -2; inset: 0; }
 .experience-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 63% 39%; }
 .experience-stage::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, var(--night) 1%, #0b0a0acf 26%, #0b0a0a17 85%); }
-.experience-lead { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; }
 .experience h2 { font-size: clamp(2.25rem, 5.3vw, 6rem); line-height: .96; }
 .experience h2 span { display: block; }
 .experience h2 span + span { margin-top: .08em; }
@@ -352,12 +348,13 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
   .steps li > div { grid-column: 2; grid-row: 1; }
   .step-index { grid-column: 3; }
   .experience-stage { min-height: clamp(340px, 112vw, 530px); padding-bottom: 32px; }
-  .experience-lead { grid-template-columns: 1fr; justify-items: start; gap: 18px; }
   .experience h2 { font-size: clamp(1.65rem, 6.35vw, 3rem); }
   .benefits { grid-template-columns: minmax(0, 1fr); gap: 13px; }
   .benefits li { padding-top: 13px; }
   .section-heading { gap: 12px; }
+  .events .section-heading { align-items: center; }
   .events h2 { font-size: clamp(1.9rem, 7.2vw, 3.3rem); }
+  .scene-accent--ticket { width: clamp(88px, 27vw, 120px); }
   .event-stub { border-left: 0; border-top: 1px dashed #807a78; }
   .event-stub::before, .event-stub::after { top: calc(-1 * var(--notch)); bottom: auto; }
   .event-stub::after { left: auto; right: calc(-1 * var(--notch)); }
@@ -387,6 +384,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 }
 
 @media (max-width: 360px) {
+  .events h2 { font-size: clamp(1.6rem, 8.4vw, 1.9rem); }
   #booking-form { grid-template-columns: minmax(0, 1fr); }
 }
 
