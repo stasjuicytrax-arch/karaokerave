@@ -61,18 +61,6 @@ document.fonts.ready.then(fitTape);
 if ('ResizeObserver' in window) new ResizeObserver(fitTape).observe(tape);
 motion.addEventListener('change', fitTape);
 
-const posterHero = document.querySelector('.hero');
-const posterStage = posterHero.querySelector('.hero-object');
-posterHero.addEventListener('pointermove', event => {
-  if (event.pointerType === 'touch' || posterStage.hasAttribute('data-live') || !motion.matches) return;
-  posterStage.style.setProperty('--poster-x', `${(event.clientX / innerWidth - .5) * 24}px`);
-  posterStage.style.setProperty('--poster-y', `${(event.clientY / innerHeight - .5) * 14}px`);
-}, { passive: true });
-posterHero.addEventListener('pointerleave', () => {
-  posterStage.style.removeProperty('--poster-x');
-  posterStage.style.removeProperty('--poster-y');
-});
-
 if (motion.matches && 'IntersectionObserver' in window) {
   const elements = [...document.querySelectorAll('[data-reveal]')];
   const observer = new IntersectionObserver(entries => {
