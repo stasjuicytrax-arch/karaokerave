@@ -1,7 +1,6 @@
 const hero = document.querySelector('.hero');
 const stage = document.querySelector('.hero-object');
 const canvas = stage.querySelector('canvas');
-const control = document.querySelector('.scene-control');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
 
@@ -104,44 +103,6 @@ function lightStage(THREE, scene) {
   }
 }
 
-function createSpotlights(THREE, scene) {
-  const softBeam = texture(THREE, 128, 256, ctx => {
-    const image = ctx.createImageData(128, 256);
-    image.data.fill(255);
-    for (let y = 0; y < 256; y++) {
-      const distance = y / 255;
-      const spread = .035 + distance * .72;
-      for (let x = 0; x < 128; x++) {
-        const across = x / 127;
-        const cross = (across - .5) / spread;
-        const fade = Math.sin(Math.PI * distance) ** .8 * Math.sin(Math.PI * across) ** 1.5;
-        const glow = Math.exp(-4.2 * cross * cross) * fade;
-        const pixel = (y * 128 + x) * 4;
-        image.data[pixel + 3] = Math.round(255 * glow);
-      }
-    }
-    ctx.putImageData(image, 0, 0);
-  });
-  const rig = new THREE.Group();
-  for (const [x, y, width, height, angle, color, opacity] of [
-    [.55, .4, 2.6, 7.5, .89, 0xec1429, .29],
-    [-.1, .55, 2.4, 7.2, -.88, 0xfa2534, .25],
-    [1.25, 1, 1.6, 6, .67, 0xf6b9ad, .12],
-  ]) {
-    const material = new THREE.MeshBasicMaterial({
-      color, map: softBeam, opacity, transparent: true, depthWrite: false,
-      blending: THREE.AdditiveBlending, toneMapped: false,
-    });
-    const beam = new THREE.Mesh(new THREE.PlaneGeometry(width, height), material);
-    beam.position.set(x, y, -2.1);
-    beam.rotation.z = angle;
-    rig.add(beam);
-  }
-  scene.add(rig);
-  return rig;
-}
-
-
 async function start() {
   if (reduceMotion.matches) return;
   const context = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
@@ -156,20 +117,18 @@ async function start() {
   camera.position.set(0, 0, 9.2);
   lightStage(THREE, scene);
   const microphone = createMicrophone(THREE, scene);
-  const spotlights = createSpotlights(THREE, scene);
   const pointer = new THREE.Vector2();
   const current = new THREE.Vector2();
   let elapsed = 0;
   let previousFrame = null;
   let frame = 0;
   let visible = true;
-  let paused = false;
   let lost = false;
 
   function render() {
-    microphone.rotation.set(-.14 + current.y * .16, -.24 + current.x * .38 + Math.sin(elapsed * .7) * .13, -.41 + current.x * .09);
-    microphone.position.y = .12 + Math.sin(elapsed * 1.25) * .10;
-    spotlights.rotation.z = Math.sin(elapsed * .45) * .12 + current.x * .07;
+    microphone.rotation.set(-.14 + current.y * .16, -.24 + current.x * .38 + Math.sin(elapsed * .78) * .25, -.41 + current.x * .09 + Math.sin(elapsed * .9) * .075);
+    microphone.position.x = Math.sin(elapsed * .73) * .13;
+    microphone.position.y = .12 + Math.sin(elapsed * 1.3) * .18;
     renderer.render(scene, camera);
   }
 
@@ -187,7 +146,7 @@ async function start() {
   }
 
   function canAnimate() {
-    return visible && !paused && !lost && !document.hidden && !reduceMotion.matches;
+    return visible && !lost && !document.hidden && !reduceMotion.matches;
   }
 
   function tick(now) {
@@ -206,7 +165,6 @@ async function start() {
   function sync() {
     const live = !lost && !reduceMotion.matches;
     stage.toggleAttribute('data-live', live);
-    control.hidden = !live;
     if (canAnimate()) {
       if (!frame) frame = requestAnimationFrame(tick);
     } else {
@@ -216,12 +174,6 @@ async function start() {
     }
   }
 
-  control.addEventListener('click', () => {
-    paused = !paused;
-    control.setAttribute('aria-label', paused ? 'Возобновить 3D-анимацию' : 'Приостановить 3D-анимацию');
-    control.querySelector('use').setAttribute('href', paused ? '#play' : '#pause');
-    sync();
-  });
   hero.addEventListener('pointermove', event => {
     if (!finePointer.matches || event.pointerType === 'touch') return;
     pointer.set(event.clientX / innerWidth * 2 - 1, event.clientY / innerHeight * 2 - 1);
