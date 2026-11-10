@@ -10,7 +10,7 @@
   <link rel="icon" href="../assets/karaoke-rave-steel-mark.svg" type="image/svg+xml">
   <link rel="preload" href="./inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./type.css">
-  <link rel="stylesheet" href="./preview.css?v=orchestra">
+  <link rel="stylesheet" href="./preview.css?v=stage-photos">
   <script src="../gallery.js" defer></script>
   <script src="./booking.js" defer></script>
   <script type="module" src="./stage.mjs?v=encore"></script>
@@ -81,9 +81,10 @@
 
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-stage" aria-hidden="true">
-        <img src="../assets/live-3-1280.webp" srcset="../assets/live-3-640.webp 640w, ../assets/live-3-1280.webp 1280w, ../assets/live-3-1920.webp 1920w" sizes="(max-width: 680px) 100vw, 76vw" width="1280" height="852" fetchpriority="high" alt="">
-      </div>
+      <picture class="hero-stage" aria-hidden="true">
+        <source media="(max-width: 680px)" srcset="../assets/hero-koryakov-082-640.webp 640w, ../assets/hero-koryakov-082-1200.webp 1200w" sizes="100vw" width="1200" height="1800">
+        <img src="../assets/hero-koryakov-144-1600.webp" srcset="../assets/hero-koryakov-144-1600.webp 1600w, ../assets/hero-koryakov-144-2400.webp 2400w" sizes="100vw" width="1600" height="1064" fetchpriority="high" alt="">
+      </picture>
       <div class="hero-object" aria-hidden="true">
         <img class="hero-render" src="./microphone.webp?v=live-edit" width="740" height="800" fetchpriority="high" alt="">
         <canvas class="hero-canvas"></canvas>

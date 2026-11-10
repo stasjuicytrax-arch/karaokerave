@@ -144,8 +144,16 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .mobile-menu-contacts > .contact-link { font-size: 1.16rem; }
 
 .hero { position: relative; isolation: isolate; background: var(--night); }
-.hero-stage { position: absolute; z-index: -2; inset: 0; overflow: hidden; background: radial-gradient(ellipse 34% 45% at 75% 48%, #500a10, #24090b 55%, transparent); }
-.hero-stage img { width: 100%; height: 100%; object-fit: cover; object-position: center 66%; filter: grayscale(1); mix-blend-mode: luminosity; opacity: .26; mask-image: radial-gradient(ellipse 58% 54% at 65% 50%, #000 26%, transparent 96%); }
+.hero-stage { position: absolute; z-index: -2; inset: 0; overflow: hidden; }
+.hero-stage img { width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
+.hero-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(11 10 10 / .9), rgb(11 10 10 / .68) 36%, rgb(11 10 10 / .12) 82%),
+    linear-gradient(180deg, rgb(11 10 10 / .62), rgb(11 10 10 / .1) 17%, rgb(11 10 10 / .38) 56%, var(--night));
+}
 .hero-object { position: absolute; z-index: -1; inset: 0 max(0px, calc((100vw - 1660px) / 2)) 5% auto; width: min(59vw, 890px); pointer-events: none; }
 .hero-render, .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-render { object-fit: contain; transition: opacity .22s var(--ease-out), translate .65s cubic-bezier(.26, .23, .35, 1); }
@@ -331,8 +339,8 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
   .header[data-menu-ready] { width: fit-content; min-height: 48px; margin-right: max(var(--gutter), env(safe-area-inset-right)); padding: 0; }
   .header[data-menu-ready] > :not(.nav-toggle) { display: none; }
   .header[data-menu-ready] .nav-toggle { display: grid; }
-  .hero-stage { background: radial-gradient(ellipse 65% 30% at 53% 23%, #500a10, #24090b 55%, transparent); }
-  .hero-stage img { height: min(420px, 100%); mask-image: radial-gradient(ellipse 70% 55% at 53% 49%, #000 28%, transparent 93%); }
+  .hero-stage img { object-position: center top; }
+  .hero-stage::after { background: linear-gradient(180deg, rgb(11 10 10 / .58), rgb(11 10 10 / .18) 12%, var(--night) min(79vw, 400px)); }
   .hero-object { inset: 0 0 auto; width: 100%; height: clamp(255px, 66vw, 410px); }
   .hero-inner { min-height: 0; padding-block: clamp(235px, 57vw, 365px) 26px; }
   .hero-title { font-size: clamp(1.75rem, 8.65vw, 3.6rem); }
