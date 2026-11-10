@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./preview.css">
   <script src="../gallery.js" defer></script>
   <script src="./booking.js" defer></script>
+  <script type="module" src="./stage.mjs"></script>
 </head>
 <body>
   <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -22,6 +23,8 @@
     <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
     <symbol id="prev" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
     <symbol id="next" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="pause" viewBox="0 0 24 24"><path d="M9 5v14m6-14v14"/></symbol>
+    <symbol id="play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
   </svg>
   <a class="skip" href="#main">Перейти к содержимому</a>
   <header class="header wrap" id="top">
@@ -41,6 +44,10 @@
       <div class="hero-stage" aria-hidden="true">
         <img src="../assets/live-3-1280.webp" srcset="../assets/live-3-640.webp 640w, ../assets/live-3-1280.webp 1280w, ../assets/live-3-1920.webp 1920w" sizes="(max-width: 680px) 100vw, 76vw" width="1280" height="852" fetchpriority="high" alt="">
       </div>
+      <div class="hero-object" aria-hidden="true">
+        <img class="hero-render" src="./microphone.webp" width="740" height="800" fetchpriority="high" alt="">
+        <canvas class="hero-canvas"></canvas>
+      </div>
       <div class="hero-inner wrap">
         <h1 id="hero-title" class="hero-title"><span>Караоке Рейв<span class="sr-only"> —</span></span><span>Поёт <mark>весь зал!</mark></span></h1>
         <div class="hero-bottom">
@@ -58,6 +65,9 @@
           </a>
         </div>
       </div>
+      <button class="scene-control" type="button" aria-label="Приостановить 3D-анимацию" hidden>
+        <svg class="icon" aria-hidden="true"><use href="#pause"/></svg>
+      </button>
     </section>
 
     <div class="tape" aria-hidden="true"><div class="wrap tape-inner"><span>Живой оркестр</span><span></span><span>Любимые песни</span><span></span><span>Один большой голос</span></div></div>
@@ -150,7 +160,7 @@
     <section class="section booking" id="booking" aria-labelledby="booking-title">
       <div class="wrap booking-grid">
         <div class="booking-copy">
-          <h2 id="booking-title">Хотите, чтобы пел <mark>весь ваш зал?</mark></h2>
+          <h2 id="booking-title">Хотите, чтобы пел<br><mark>весь ваш зал?</mark></h2>
           <p>Караоке Рейв можно заказать на&nbsp;корпоратив, фестиваль или частное мероприятие. Оркестр сыграет любимые песни ваших гостей, а&nbsp;текст на&nbsp;экране поможет всем подпевать.</p>
           <p>Подберём программу под формат события, состав гостей и&nbsp;их музыкальные вкусы.</p>
         </div>
