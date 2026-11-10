@@ -160,7 +160,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .hero-title { font-size: clamp(3rem, 6.15vw, 6.75rem); line-height: 1; letter-spacing: -.04em; word-spacing: .07em; }
 .hero-title > span { display: block; }
 .hero-chorus { margin-top: .65em; font-size: clamp(1.2rem, 2.25vw, 2.05rem); line-height: 1.15; letter-spacing: -.01em; }
-.hero-chorus strong { color: var(--red); font-weight: inherit; }
+.hero-chorus mark { display: inline-block; padding: .12em .28em .15em; }
 .hero-bottom { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; margin-top: clamp(22px, 3vw, 42px); }
 .hero-copy p { max-width: 43ch; font-size: clamp(1rem, 1.35vw, 1.25rem); line-height: 1.22; font-weight: 600; }
 .hero-copy .actions { margin-top: 17px; }
