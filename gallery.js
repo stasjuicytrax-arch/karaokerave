@@ -22,7 +22,7 @@ function show(index) {
 }
 function close() { dialog.close(); }
 links.forEach((link, index) => link.addEventListener('click', event => {
-  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  if (typeof dialog.showModal !== 'function' || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
   opener = link;
   show(index);
@@ -44,4 +44,22 @@ if (links.length < 2) {
   dialog.querySelector(".viewer-prev").hidden = true;
   dialog.querySelector(".viewer-next").hidden = true;
   counter.hidden = true;
+} else {
+  const photoArea = image.closest('figure');
+  let swipeStart;
+
+  photoArea.addEventListener('pointerdown', event => {
+    swipeStart = event.pointerType === 'touch' && event.isPrimary ? event : null;
+  });
+  photoArea.addEventListener('pointercancel', () => { swipeStart = null; });
+  photoArea.addEventListener('pointerup', event => {
+    const start = swipeStart;
+    swipeStart = null;
+    if (event.pointerId !== start?.pointerId) return;
+    const distanceX = event.clientX - start.clientX;
+    const distanceY = event.clientY - start.clientY;
+    if (Math.abs(distanceX) >= 55 && Math.abs(distanceX) > Math.abs(distanceY) * 1.5) {
+      show(current + (distanceX < 0 ? 1 : -1));
+    }
+  });
 }

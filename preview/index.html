@@ -10,10 +10,11 @@
   <link rel="icon" href="../assets/karaoke-rave-steel-mark.svg" type="image/svg+xml">
   <link rel="preload" href="./inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./type.css">
-  <link rel="stylesheet" href="./preview.css?v=orchestra-stage">
-  <script src="../gallery.js" defer></script>
+  <link rel="stylesheet" href="./preview.css?v=stage-pulse">
+  <script src="../gallery.js?v=photo-report" defer></script>
   <script src="./booking.js" defer></script>
-  <script type="module" src="./accents.mjs?v=encore"></script>
+  <script type="module" src="./accents.mjs?v=stage-pulse"></script>
+  <script type="module" src="./stage-pulse.mjs"></script>
   <script src="./motion.js?v=orchestra-stage" defer></script>
 </head>
 <body id="top">
@@ -30,7 +31,6 @@
     <symbol id="chorus" viewBox="0 0 32 32"><circle cx="16" cy="10" r="4"/><path d="M9 26v-3a7 7 0 0 1 14 0v3M7 8a3.5 3.5 0 0 0 0 7m18-7a3.5 3.5 0 0 1 0 7M3 25v-2a5 5 0 0 1 3-4m23 6v-2a5 5 0 0 0-3-4"/></symbol>
     <symbol id="signal" viewBox="0 0 32 32"><path d="M4 13v6m6-11v16m6-21v26m6-21v16m6-11v6"/></symbol>
     <symbol id="ticket" viewBox="0 0 32 32"><path d="M4 8h24v5a3 3 0 0 0 0 6v5H4v-5a3 3 0 0 0 0-6zM21 9v3m0 3v2m0 3v3"/></symbol>
-    <symbol id="frame" viewBox="0 0 32 32"><path d="M4 12V4h8m8 0h8v8m0 8v8h-8m-8 0H4v-8"/><circle cx="16" cy="16" r="4"/></symbol>
     <symbol id="burger" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
     <symbol id="phone" viewBox="0 0 24 24"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 2a14 14 0 0 1-7-7l2-2z"/></symbol>
     <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
@@ -84,18 +84,18 @@
         <source media="(max-width: 680px)" srcset="../assets/hero-koryakov-082-640.webp 640w, ../assets/hero-koryakov-082-1200.webp 1200w" sizes="100vw" width="1200" height="1800">
         <img src="../assets/hero-koryakov-144-1600.webp" srcset="../assets/hero-koryakov-144-1600.webp 1600w, ../assets/hero-koryakov-144-2400.webp 2400w" sizes="100vw" width="1600" height="1064" fetchpriority="high" alt="">
       </picture>
+      <canvas class="hero-pulse" aria-hidden="true"></canvas>
       <div class="hero-inner wrap">
         <h1 id="hero-title" class="hero-title">
           <span>Караоке Рейв</span>
           <span>с оркестром</span>
-          <span class="hero-chorus">— поёт весь зал!</span>
+          <span class="hero-chorus">— <strong>поёт весь зал!</strong></span>
         </h1>
         <div class="hero-bottom">
           <div class="hero-copy">
             <p>Любимые песни на&nbsp;большом экране и&nbsp;сотни голосов в&nbsp;унисон.</p>
             <div class="actions">
               <a class="button button--red" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
-              <a class="text-link" href="#booking">Хочу такое мероприятие</a>
             </div>
           </div>
           <a class="hero-date" href="#afisha">
@@ -117,7 +117,7 @@
       <div class="wrap format">
         <div class="format-poster">
           <figure class="format-photo" data-reveal="shutter">
-            <img src="../assets/live-4-640.webp" srcset="../assets/live-4-640.webp 640w, ../assets/live-4-1280.webp 1280w" sizes="(max-width: 680px) 92vw, 62vw" width="640" height="427" loading="lazy" alt="Артисты на сцене Караоке Рейв в клубном дыму">
+            <img src="../assets/report/dsc-0461-thumb.webp" srcset="../assets/report/dsc-0461-thumb.webp 640w, ../assets/report/dsc-0461.webp 1920w" sizes="(max-width: 680px) 92vw, 62vw" width="640" height="426" loading="lazy" alt="Оркестр на сцене Караоке Рейв, за музыкантами виден зал">
             <figcaption><svg class="icon" aria-hidden="true"><use href="#signal"/></svg> Караоке Рейв вживую</figcaption>
           </figure>
           <h2 id="format-title" data-reveal="fly-in">Как это <span>работает</span></h2>
@@ -135,7 +135,7 @@
 
     <section class="experience" aria-labelledby="experience-title">
       <div class="experience-stage">
-        <figure class="experience-photo"><img src="../assets/live-2-640.webp" srcset="../assets/live-2-640.webp 640w, ../assets/live-2-1280.webp 1280w" sizes="100vw" width="640" height="427" loading="lazy" alt="Зал на Караоке Рейв в свете красных прожекторов"></figure>
+        <figure class="experience-photo"><img src="../assets/report/koryakov-128-thumb.webp" srcset="../assets/report/koryakov-128-thumb.webp 640w, ../assets/report/koryakov-128.webp 1920w" sizes="100vw" width="640" height="426" loading="lazy" alt="Зрители подпевают и поднимают руки в зале Караоке Рейв"></figure>
         <div class="wrap">
           <div class="experience-lead">
             <h2 id="experience-title"><span data-reveal="lyric">Это нужно не&nbsp;слушать.</span><span data-reveal="lyric">Это нужно <mark>прожить.</mark></span></h2>
@@ -163,7 +163,7 @@
         <article class="event-ticket" aria-labelledby="event-title" data-reveal="side">
           <div class="event-main">
             <div class="event-art">
-              <img src="../assets/event-2027-01-04.jpg" width="1280" height="511" loading="lazy" alt="Афиша Караоке Рейв с микрофоном и датой 4 января 2027 года">
+              <img src="../assets/report/koryakov-048-thumb.webp" srcset="../assets/report/koryakov-048-thumb.webp 640w, ../assets/report/koryakov-048.webp 1920w" sizes="(max-width: 680px) 92vw, 66vw" width="640" height="426" loading="lazy" alt="Сцена Караоке Рейв в красном свете на прошедшем концерте">
             </div>
             <div class="event-details">
               <h3 id="event-title">Караоке Рейв</h3>
@@ -187,18 +187,69 @@
 
     <section class="section gallery" id="photos" aria-labelledby="photos-title">
       <div class="wrap">
-        <div class="section-heading" data-reveal><h2 id="photos-title">Почувствуй атмосферу <span>Караоке Рейв</span></h2><svg class="icon" aria-hidden="true"><use href="#frame"/></svg></div>
-        <div class="photo-grid">
-          <a class="shot shot--wide" href="../assets/live-5-1920.webp" data-viewer data-reveal="shutter">
-            <img src="../assets/live-5-640.webp" srcset="../assets/live-5-640.webp 640w, ../assets/live-5-1280.webp 1280w" sizes="(max-width: 680px) 92vw, 56vw" width="640" height="426" loading="lazy" alt="Общий план зала и сцены Караоке Рейв">
+        <div class="section-heading" data-reveal>
+          <h2 id="photos-title">Караоке Рейв в&nbsp;кадре</h2>
+          <p class="gallery-count">15 фотографий</p>
+        </div>
+        <div class="photo-grid" data-reveal>
+          <a class="shot shot--feature" href="../assets/report/dsc-1065.webp" data-viewer>
+            <img src="../assets/report/dsc-1065-thumb.webp" width="1000" height="666" loading="lazy" decoding="async" alt="Зрители подняли руки перед сценой в фиолетовом свете">
             <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
           </a>
-          <a class="shot" href="../assets/live-1-1280.webp" data-viewer data-reveal>
-            <img src="../assets/live-1-640.webp" width="640" height="427" loading="lazy" alt="Зрители в зале под белыми лучами прожекторов">
+          <a class="shot" href="../assets/report/dsc-0461.webp" data-viewer>
+            <img src="../assets/report/dsc-0461-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Вид на музыкантов и зал со сцены">
             <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
           </a>
-          <a class="shot" href="../assets/live-4-1280.webp" data-viewer data-reveal="side">
-            <img src="../assets/live-4-640.webp" width="640" height="427" loading="lazy" alt="Артисты выступают на сцене Караоке Рейв">
+          <a class="shot" href="../assets/report/koryakov-128.webp" data-viewer>
+            <img src="../assets/report/koryakov-128-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Зрители поют вместе, подняв руки">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot shot--portrait" href="../assets/report/koryakov-155.webp" data-viewer>
+            <img src="../assets/report/koryakov-155-thumb.webp" width="574" height="860" loading="lazy" decoding="async" alt="Портрет скрипача на сцене">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot" href="../assets/report/dsc-1193.webp" data-viewer>
+            <img src="../assets/report/dsc-1193-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Оркестр в красном и синем сценическом свете">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot shot--panorama" href="../assets/report/koryakov-048.webp" data-viewer>
+            <img src="../assets/report/koryakov-048-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Общий план сцены с красными прожекторами и логотипом Караоке Рейв">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot" href="../assets/report/koryakov-120.webp" data-viewer>
+            <img src="../assets/report/koryakov-120-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Зрители в темноте зажгли фонарики телефонов">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot" href="../assets/report/dsc-0380.webp" data-viewer>
+            <img src="../assets/report/dsc-0380-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Групповой портрет участников оркестра">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot shot--portrait" href="../assets/report/koryakov-151.webp" data-viewer>
+            <img src="../assets/report/koryakov-151-thumb.webp" width="688" height="860" loading="lazy" decoding="async" alt="Участники оркестра позируют на лестнице">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot shot--portrait" href="../assets/report/koryakov-081.webp" data-viewer>
+            <img src="../assets/report/koryakov-081-thumb.webp" width="572" height="860" loading="lazy" decoding="async" alt="Фиолетовые лучи прожекторов над залом">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot shot--panorama" href="../assets/report/dsc-0551.webp" data-viewer>
+            <img src="../assets/report/dsc-0551-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Чёрно-белый кадр сцены в лучах прожекторов">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot" href="../assets/report/koryakov-056.webp" data-viewer>
+            <img src="../assets/report/koryakov-056-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Сцена в тёплом свете и зрители на переднем плане">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot shot--portrait" href="../assets/hero-koryakov-082-1200.webp" data-viewer>
+            <img src="../assets/report/koryakov-082-thumb.webp" width="574" height="860" loading="lazy" decoding="async" alt="Оркестр на сцене под перекрёстными лучами света">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot" href="../assets/hero-koryakov-144-2400.webp" data-viewer>
+            <img src="../assets/report/koryakov-144-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Оркестр играет перед экраном с текстом песни">
+            <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
+          </a>
+          <a class="shot" href="../assets/report/koryakov-145.webp" data-viewer>
+            <img src="../assets/report/koryakov-145-thumb.webp" width="640" height="426" loading="lazy" decoding="async" alt="Белые лучи расходятся над сценой, зритель снимает выступление на телефон">
             <span class="zoom" aria-hidden="true"><svg class="icon"><use href="#plus"/></svg></span>
           </a>
         </div>

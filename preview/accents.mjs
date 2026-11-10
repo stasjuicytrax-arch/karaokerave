@@ -102,7 +102,7 @@ function observeAccent(element) {
     started = true;
     const context = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
     if (!context) return;
-    const THREE = await import('./vendor/three-0.187.0.mjs');
+    const THREE = await import('./vendor/three-0.187.0.mjs?v=stage-pulse');
     const renderer = new THREE.WebGLRenderer({ canvas, context, alpha: true });
     renderer.setClearColor(0, 0);
     const scene = new THREE.Scene();
