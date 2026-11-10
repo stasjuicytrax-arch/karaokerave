@@ -179,8 +179,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 
 .format-poster { position: relative; isolation: isolate; display: grid; align-items: center; min-height: clamp(290px, 38vw, 550px); }
 .format h2 { position: relative; max-width: min-content; font-size: clamp(3.3rem, 8.8vw, 9.3rem); line-height: .83; }
-.format h2 span { display: block; }
-.format h2 span { color: #a50910; }
+.format h2 span { display: block; color: var(--red); }
 .format-photo { position: absolute; z-index: -1; isolation: isolate; inset: 0 0 0 34%; background: var(--night); clip-path: polygon(17% 0, 92% 0, 100% 16%, 100% 100%, 0 100%); }
 .format-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 63% center; filter: grayscale(1) contrast(1.1); }
 .format-photo::before { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, var(--paper), transparent 70%); pointer-events: none; }
@@ -190,9 +189,9 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 3vw, 44px); list-style: none; margin: 0 0 26px; padding: 0; }
 .steps li { display: grid; grid-template-columns: 1fr auto; gap: 11px; align-items: center; padding-block: 15px 5px; border-top: 1px solid #8d7d77; }
 .steps li > div { grid-column: 1 / -1; align-self: start; }
-.step-icon { display: grid; place-items: center; width: clamp(42px, 5vw, 67px); aspect-ratio: 1; background: #ac0d14; color: white; clip-path: polygon(0 0, 77% 0, 100% 23%, 100% 100%, 0 100%); }
+.step-icon { display: grid; place-items: center; width: clamp(42px, 5vw, 67px); aspect-ratio: 1; background: var(--red); color: white; clip-path: polygon(0 0, 77% 0, 100% 23%, 100% 100%, 0 100%); }
 .step-icon .icon { width: 55%; height: 55%; }
-.step-index { color: #a50910; font: 400 clamp(1.125rem, 1.8vw, 1.8rem)/1 var(--mono); }
+.step-index { color: var(--red); font: 400 clamp(1.125rem, 1.8vw, 1.8rem)/1 var(--mono); }
 .steps h3 { font-size: clamp(1.35rem, 2.05vw, 2.4rem); }
 .steps p { margin-top: 5px; max-width: 39ch; line-height: 1.36; }
 
@@ -343,7 +342,6 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
   .format, .event-ticket, .booking-grid { grid-template-columns: minmax(0, 1fr); }
   .format-poster { min-height: clamp(255px, 72vw, 425px); align-items: end; padding: 0 0 30px; }
   .format h2 { font-size: clamp(2.5rem, 10.4vw, 4.4rem); color: var(--ink); }
-  .format h2 span { color: var(--red); }
   .format-photo { inset: 0; clip-path: polygon(0 0, 90% 0, 100% 13%, 100% 100%, 0 100%); }
   .format-photo::before { background: linear-gradient(0deg, #0b0a0a 5%, transparent 82%); }
   .format-photo figcaption { top: 0; bottom: auto; left: 0; right: auto; }
@@ -426,7 +424,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
   [data-reveal="lyric"] + [data-reveal="lyric"] { animation-delay: .11s; }
   .steps li:nth-child(2), .benefits li:nth-child(2), .shot:nth-child(2) { animation-delay: .07s; }
   .steps li:nth-child(3), .benefits li:nth-child(3), .shot:nth-child(3) { animation-delay: .14s; }
-  .format-photo::after { content: ''; position: absolute; inset: 0; z-index: 2; background: #ae0b13; transform: scaleX(0); transform-origin: right; pointer-events: none; }
+  .format-photo::after { content: ''; position: absolute; inset: 0; z-index: 2; background: var(--red); transform: scaleX(0); transform-origin: right; pointer-events: none; }
   .format-photo.reveal-entered::after { animation: stage-shutter .85s var(--ease-out) both; }
   @keyframes section-enter {
     from { opacity: .15; transform: var(--reveal-transform); }
