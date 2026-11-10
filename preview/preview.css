@@ -155,7 +155,8 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .hero-inner { display: grid; align-content: end; min-height: clamp(525px, calc(94svh - 83px), 790px); padding-block: clamp(72px, 9vw, 138px) clamp(32px, 4.4vw, 64px); }
 .hero-title { font-size: clamp(3.3rem, 7.6vw, 7.6rem); line-height: .94; letter-spacing: -.045em; }
 .hero-title > span { display: block; }
-.hero-title > span + span { margin-top: .105em; }
+.hero-orchestra { display: block; margin-top: .48em; font-size: clamp(1rem, 1.8vw, 1.7rem); line-height: 1.1; letter-spacing: .08em; }
+.hero-title > span + span { margin-top: max(.105em, .6rem); }
 .hero-title mark { display: inline-block; line-height: .82; padding: .06em .105em .09em; animation: lyric-in .48s var(--ease-out) both; }
 @keyframes lyric-in { from { transform: translateY(.06em); } to { transform: translateY(0); } }
 .hero-bottom { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; margin-top: clamp(22px, 3vw, 42px); }
