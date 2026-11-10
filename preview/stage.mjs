@@ -2,7 +2,7 @@ const hero = document.querySelector('.hero');
 const stage = document.querySelector('.hero-object');
 const canvas = stage.querySelector('canvas');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+const finePointer = matchMedia('(any-pointer: fine)');
 
 function texture(THREE, width, height, draw) {
   const image = document.createElement('canvas');
@@ -126,9 +126,9 @@ async function start() {
   let lost = false;
 
   function render() {
-    microphone.rotation.set(-.14 + current.y * .16, -.24 + current.x * .38 + Math.sin(elapsed * .78) * .25, -.41 + current.x * .09 + Math.sin(elapsed * .9) * .075);
-    microphone.position.x = Math.sin(elapsed * .73) * .13;
-    microphone.position.y = .12 + Math.sin(elapsed * 1.3) * .18;
+    microphone.rotation.set(-.14 + current.y * .28, -.24 + current.x * .56 + Math.sin(elapsed * .78) * .19, -.41 + current.x * .12 + Math.sin(elapsed * .9) * .065);
+    microphone.position.x = current.x * .32 + Math.sin(elapsed * .73) * .13;
+    microphone.position.y = .12 - current.y * .22 + Math.sin(elapsed * 1.3) * .23;
     renderer.render(scene, camera);
   }
 
@@ -175,7 +175,7 @@ async function start() {
   }
 
   hero.addEventListener('pointermove', event => {
-    if (!finePointer.matches || event.pointerType === 'touch') return;
+    if (event.pointerType === 'touch') return;
     pointer.set(event.clientX / innerWidth * 2 - 1, event.clientY / innerHeight * 2 - 1);
   }, { passive: true });
   hero.addEventListener('pointerleave', () => pointer.set(0, 0));

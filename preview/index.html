@@ -10,11 +10,11 @@
   <link rel="icon" href="../assets/karaoke-rave.svg" type="image/svg+xml">
   <link rel="preload" href="./inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./type.css">
-  <link rel="stylesheet" href="./preview.css?v=glass-stage">
+  <link rel="stylesheet" href="./preview.css?v=live-ticket">
   <script src="../gallery.js" defer></script>
   <script src="./booking.js" defer></script>
-  <script type="module" src="./stage.mjs?v=live-edit"></script>
-  <script type="module" src="./motion.mjs"></script>
+  <script type="module" src="./stage.mjs?v=live-ticket"></script>
+  <script src="./motion.js?v=live-ticket" defer></script>
 </head>
 <body id="top">
   <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -81,8 +81,7 @@
 
     <div class="tape" aria-hidden="true">
       <div class="tape-track">
-        <div class="tape-loop"><span>Живой оркестр</span><span>Любимые песни</span><span>Один большой голос</span><span>Живой оркестр</span><span>Любимые песни</span><span>Один большой голос</span></div>
-        <div class="tape-loop"><span>Живой оркестр</span><span>Любимые песни</span><span>Один большой голос</span><span>Живой оркестр</span><span>Любимые песни</span><span>Один большой голос</span></div>
+        <div class="tape-loop"><span>Живой оркестр</span><span>Любимые песни</span><span>Один большой голос</span></div>
       </div>
     </div>
 
@@ -93,7 +92,7 @@
             <img src="../assets/live-4-640.webp" srcset="../assets/live-4-640.webp 640w, ../assets/live-4-1280.webp 1280w" sizes="(max-width: 680px) 92vw, 62vw" width="640" height="427" loading="lazy" alt="Артисты на сцене Караоке Рейв в клубном дыму">
             <figcaption><svg class="icon" aria-hidden="true"><use href="#signal"/></svg> Караоке Рейв вживую</figcaption>
           </figure>
-          <h2 id="format-title" data-reveal="side">Как это <span>работает</span></h2>
+          <h2 id="format-title" data-reveal="fly-in">Как это <span>работает</span></h2>
         </div>
         <div class="format-program">
           <ol class="steps" role="list">
@@ -110,18 +109,18 @@
       <div class="experience-stage">
         <figure class="experience-photo"><img src="../assets/live-2-640.webp" srcset="../assets/live-2-640.webp 640w, ../assets/live-2-1280.webp 1280w" sizes="100vw" width="640" height="427" loading="lazy" alt="Зал на Караоке Рейв в свете красных прожекторов"></figure>
         <div class="wrap">
-          <h2 id="experience-title"><span data-reveal="lyric">Это нужно не&nbsp;слушать.</span><span data-reveal="lyric">Это нужно <mark>прожить.</mark></span></h2>
+          <div class="experience-lead">
+            <h2 id="experience-title"><span data-reveal="lyric">Это нужно не&nbsp;слушать.</span><span data-reveal="lyric">Это нужно <mark>прожить.</mark></span></h2>
+            <a class="button button--red" href="#afisha" data-reveal>Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+          </div>
         </div>
       </div>
       <div class="wrap experience-notes">
-          <ul class="benefits" data-reveal>
-            <li>Живой звук настоящего оркестра</li>
-            <li>Любимые песни, которые знает весь зал</li>
-            <li>Пой с&nbsp;места, даже если у&nbsp;тебя нет вокального опыта</li>
-            <li>Энергия сотен голосов в&nbsp;унисон</li>
-            <li>Вечер, на&nbsp;который хочется позвать друзей</li>
-          </ul>
-          <a class="button button--small button--outline" href="#afisha" data-reveal>Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+        <ul class="benefits" role="list">
+          <li data-reveal><svg class="icon" aria-hidden="true"><use href="#signal"/></svg><div><h3>Живой звук</h3><p>Настоящий оркестр играет любимые песни, которые знает весь зал.</p></div></li>
+          <li data-reveal><svg class="icon" aria-hidden="true"><use href="#chorus"/></svg><div><h3>Весь зал в унисон</h3><p>Пой с&nbsp;места. Вокальный опыт не&nbsp;нужен, когда с&nbsp;тобой поют сотни голосов.</p></div></li>
+          <li data-reveal><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg><div><h3>Вечер с друзьями</h3><p>Зови тех, с&nbsp;кем хочется спеть любимую песню.</p></div></li>
+        </ul>
       </div>
     </section>
 
@@ -129,20 +128,25 @@
       <div class="wrap">
         <div class="section-heading" data-reveal><h2 id="events-title">Ближайшие события</h2><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg></div>
         <article class="event-ticket" aria-labelledby="event-title" data-reveal="side">
-          <div class="event-art">
-            <img src="../assets/event-2027-01-04.jpg" width="1280" height="511" loading="lazy" alt="Афиша Караоке Рейв с микрофоном и датой 4 января 2027 года">
+          <div class="event-main">
+            <div class="event-art">
+              <img src="../assets/event-2027-01-04.jpg" width="1280" height="511" loading="lazy" alt="Афиша Караоке Рейв с микрофоном и датой 4 января 2027 года">
+            </div>
+            <div class="event-details">
+              <h3 id="event-title">Караоке Рейв</h3>
+              <dl>
+                <div><dt>Время</dt><dd>Объявим позже</dd></div>
+                <div><dt>Площадка</dt><dd>Пермь, место уточняется</dd></div>
+                <div><dt>Билеты</dt><dd>Цена появится к старту продаж</dd></div>
+              </dl>
+            </div>
           </div>
-          <div class="event-details">
-            <h3 id="event-title">Караоке Рейв</h3>
-            <p class="event-date" aria-hidden="true">04<span>.</span>01</p>
-            <dl>
-              <div><dt>Дата</dt><dd><time datetime="2027-01-04">4 января 2027</time></dd></div>
-              <div><dt>Время</dt><dd>Объявим позже</dd></div>
-              <div><dt>Площадка</dt><dd>Пермь, место уточняется</dd></div>
-              <div><dt>Билеты</dt><dd>Цена появится к старту продаж</dd></div>
-            </dl>
+          <div class="event-stub">
+            <p class="event-stub-label"><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg> Караоке Рейв / Пермь</p>
+            <time class="event-date" datetime="2027-01-04"><span aria-hidden="true">04<span>.</span>01</span><small>4 января 2027</small></time>
             <button class="button button--unavailable" type="button" disabled>Продажи скоро</button>
             <a class="text-link" href="https://vk.ru/karaokeraveperm">Следить за анонсом ВКонтакте <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
+            <span class="event-stub-bars" aria-hidden="true"></span>
           </div>
         </article>
       </div>
@@ -178,7 +182,7 @@
     <section class="section booking" id="booking" aria-labelledby="booking-title">
       <div class="wrap booking-grid">
         <div class="booking-copy" data-reveal="side">
-          <h2 id="booking-title">Хотите, чтобы пел<br><mark>весь ваш зал?</mark></h2>
+          <h2 id="booking-title"><span>Хотите, чтобы пел</span><mark>весь ваш зал?</mark></h2>
           <p>Караоке Рейв можно заказать на&nbsp;корпоратив, фестиваль или частное мероприятие. Оркестр сыграет любимые песни ваших гостей, а&nbsp;текст на&nbsp;экране поможет всем подпевать.</p>
           <p>Подберём программу под формат события, состав гостей и&nbsp;их музыкальные вкусы.</p>
         </div>
@@ -202,7 +206,12 @@
 
   <footer class="section footer" id="contacts" aria-labelledby="contacts-title">
     <div class="wrap">
-      <div class="section-heading" data-reveal="side"><h2 id="contacts-title">Стань частью<br>Караоке Рейв</h2><svg class="icon" aria-hidden="true"><use href="#signal"/></svg></div>
+      <div class="section-heading" data-reveal="side">
+        <h2 id="contacts-title">Стань частью<br>Караоке Рейв</h2>
+        <svg class="icon equalizer" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 13v6"/><path d="M10 8v16"/><path d="M16 3v26"/><path d="M22 8v16"/><path d="M28 13v6"/>
+        </svg>
+      </div>
       <div class="actions" data-reveal>
         <a class="button button--red" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
         <a class="button button--outline" href="#booking">Заказать на своё мероприятие</a>

@@ -39,6 +39,43 @@ if (/Chrome\/|Edg\//.test(navigator.userAgent) && CSS.supports('backdrop-filter'
 
 const motion = matchMedia('(prefers-reduced-motion: no-preference)');
 
+const tape = document.querySelector('.tape');
+const tapeTrack = tape.querySelector('.tape-track');
+const tapeLoop = tapeTrack.firstElementChild;
+const tapePhrases = [...tapeLoop.children];
+
+function fitTape() {
+  tapeTrack.replaceChildren(tapeLoop);
+  tapeLoop.replaceChildren(...tapePhrases);
+  tape.setAttribute('data-loop', '');
+  if (!motion.matches) return;
+  const phraseWidth = tapeLoop.getBoundingClientRect().width;
+  if (!phraseWidth) return;
+  const repeats = Math.ceil(tape.clientWidth / phraseWidth);
+  for (let copy = 1; copy < repeats; copy++) {
+    tapeLoop.append(...tapePhrases.map(phrase => phrase.cloneNode(true)));
+  }
+  tapeTrack.append(tapeLoop.cloneNode(true));
+  tapeTrack.style.setProperty('--tape-duration', `${tapeLoop.getBoundingClientRect().width / 55}s`);
+}
+
+fitTape();
+document.fonts.ready.then(fitTape);
+if ('ResizeObserver' in window) new ResizeObserver(fitTape).observe(tape);
+motion.addEventListener('change', fitTape);
+
+const posterHero = document.querySelector('.hero');
+const posterStage = posterHero.querySelector('.hero-object');
+posterHero.addEventListener('pointermove', event => {
+  if (event.pointerType === 'touch' || posterStage.hasAttribute('data-live') || !motion.matches) return;
+  posterStage.style.setProperty('--poster-x', `${(event.clientX / innerWidth - .5) * 42}px`);
+  posterStage.style.setProperty('--poster-y', `${(event.clientY / innerHeight - .5) * 26}px`);
+}, { passive: true });
+posterHero.addEventListener('pointerleave', () => {
+  posterStage.style.removeProperty('--poster-x');
+  posterStage.style.removeProperty('--poster-y');
+});
+
 if (motion.matches && 'IntersectionObserver' in window) {
   const elements = [...document.querySelectorAll('[data-reveal]')];
   const observer = new IntersectionObserver(entries => {
@@ -50,7 +87,7 @@ if (motion.matches && 'IntersectionObserver' in window) {
   }, { rootMargin: '0px 0px -8%' });
 
   for (const element of elements) {
-    if (element.getBoundingClientRect().top < innerHeight * .92) continue;
+    if (element.dataset.reveal !== 'fly-in' && element.getBoundingClientRect().top < innerHeight * .92) continue;
     element.classList.add('reveal-pending');
     observer.observe(element);
   }
