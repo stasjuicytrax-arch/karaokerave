@@ -1,14 +1,27 @@
-.ticket-shadow { filter: drop-shadow(0 18px 24px #0b0a0a24); }
+.ticket-shadow {
+  filter: drop-shadow(0 3px 0 #968d84)
+    drop-shadow(0 4px 6px #0b0a0a36)
+    drop-shadow(0 17px 22px #0b0a0a2e);
+}
 .ticket {
   --stub-width: clamp(164px, 24%, 242px);
   --punch: 15px;
+  --edge-cut: clamp(4px, .6vw, 8px);
+  --edge-strip: calc(var(--edge-cut) + 1px);
+  --edge-step: calc(var(--edge-cut) * 3.15);
+  --edge-mask:
+    radial-gradient(circle at left center, transparent var(--edge-cut), #000 calc(var(--edge-cut) + .6px)) left center / var(--edge-strip) var(--edge-step) repeat-y,
+    radial-gradient(circle at right center, transparent var(--edge-cut), #000 calc(var(--edge-cut) + .6px)) right center / var(--edge-strip) var(--edge-step) repeat-y,
+    linear-gradient(#000 0 0) center / calc(100% - 2 * var(--edge-strip) + 1px) 100% no-repeat;
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--stub-width);
   overflow: hidden;
   border-radius: 12px;
   mask:
-    radial-gradient(circle at calc(100% - var(--stub-width)) 0, transparent var(--punch), #000 calc(var(--punch) + .6px)) top / 100% 51% no-repeat,
-    radial-gradient(circle at calc(100% - var(--stub-width)) 100%, transparent var(--punch), #000 calc(var(--punch) + .6px)) bottom / 100% 51% no-repeat;
+    radial-gradient(circle at calc(100% - var(--stub-width)) 0, transparent var(--punch), #000 calc(var(--punch) + .6px)),
+    radial-gradient(circle at calc(100% - var(--stub-width)) 100%, transparent var(--punch), #000 calc(var(--punch) + .6px)),
+    var(--edge-mask);
+  mask-composite: intersect, intersect, add, add, add;
 }
 .ticket-body {
   position: relative;
@@ -111,7 +124,7 @@
 .ticket-buy:focus-visible { outline-offset: -5px; }
 
 @media (max-width: 640px) {
-  .ticket { --punch: 11px; grid-template-columns: minmax(0, 1fr); mask: none; }
+  .ticket { --punch: 11px; grid-template-columns: minmax(0, 1fr); mask: var(--edge-mask); }
   .ticket-body {
     min-height: 300px;
     mask:
