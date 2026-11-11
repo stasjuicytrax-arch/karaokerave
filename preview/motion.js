@@ -62,13 +62,13 @@ if ('ResizeObserver' in window) new ResizeObserver(fitTape).observe(tape);
 motion.addEventListener('change', fitTape);
 
 if ('IntersectionObserver' in window) {
-  const stepObserver = new IntersectionObserver(entries => {
+  const iconObserver = new IntersectionObserver(entries => {
     for (const entry of entries) {
       entry.target.toggleAttribute('data-in-view', entry.intersectionRatio >= .6);
     }
   }, { threshold: .6 });
 
-  for (const icon of document.querySelectorAll('.step-icon')) stepObserver.observe(icon);
+  for (const icon of document.querySelectorAll('.step-icon, .benefit-icon')) iconObserver.observe(icon);
 }
 
 if (motion.matches && 'IntersectionObserver' in window) {
