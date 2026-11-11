@@ -16,9 +16,9 @@
   <link rel="icon" href="./assets/karaoke-rave-steel-mark.svg" type="image/svg+xml">
   <link rel="preload" href="./preview/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./preview/type.css">
-  <link rel="stylesheet" href="./preview/preview.css?v=step-icons">
+  <link rel="stylesheet" href="./preview/preview.css?v=tickets-and-booking">
   <script src="./gallery.js?v=photo-report" defer></script>
-  <script src="./preview/booking.js" defer></script>
+  <script src="./preview/booking.js?v=telegram" defer></script>
   <script type="module" src="./preview/accents.mjs?v=stage-pulse"></script>
   <script type="module" src="./preview/stage-pulse.mjs"></script>
   <script src="./preview/motion.js?v=step-icons" defer></script>
@@ -57,7 +57,7 @@
       <a href="#photos">Фото</a>
       <a href="#booking">Организаторам</a>
     </nav>
-    <a class="button button--small button--outline header-ticket" href="#afisha">Билеты <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+    <a class="button button--small button--outline header-ticket" href="https://perm.qtickets.events/271744-karaoke-reyv-2027">Билеты <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
     <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-haspopup="dialog" aria-controls="mobile-menu"><svg class="icon" aria-hidden="true"><use href="#burger"/></svg></button>
   </header>
 
@@ -72,7 +72,7 @@
       <a href="#booking">Организаторам <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
       <a href="#contacts">Контакты <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
     </nav>
-    <a class="button button--red mobile-menu-ticket" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+    <a class="button button--red mobile-menu-ticket" href="https://perm.qtickets.events/271744-karaoke-reyv-2027">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
     <div class="mobile-menu-contacts">
       <a class="contact-link" href="tel:+79194459601"><svg class="icon" aria-hidden="true"><use href="#phone"/></svg> +7 (919) 445-96-01</a>
       <div class="socials">
@@ -99,7 +99,7 @@
           <div class="hero-copy">
             <p>Любимые песни на&nbsp;большом экране и&nbsp;сотни голосов в&nbsp;унисон.</p>
             <div class="actions">
-              <a class="button button--red" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+              <a class="button button--red" href="https://perm.qtickets.events/271744-karaoke-reyv-2027">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
             </div>
           </div>
           <a class="hero-date" href="#afisha">
@@ -203,14 +203,14 @@
                 <div><dt>Сбор гостей</dt><dd><time datetime="18:00">18:00</time>–<time datetime="19:00">19:00</time></dd></div>
                 <div><dt>Начало</dt><dd><time datetime="19:00">19:00</time></dd></div>
                 <div><dt>Площадка</dt><dd>Концерт-холл «Свобода», Пермь</dd></div>
-                <div><dt>Билеты</dt><dd>Цена появится к старту продаж</dd></div>
+                <div><dt>Билеты</dt><dd>В продаже на QTickets</dd></div>
               </dl>
             </div>
           </div>
           <div class="event-stub">
             <p class="event-stub-label"><svg class="icon" aria-hidden="true"><use href="#ticket"/></svg> Караоке Рейв / Пермь</p>
             <time class="event-date" datetime="2027-01-04"><span aria-hidden="true">04<span>.</span>01</span><small>4 января 2027</small></time>
-            <button class="button button--unavailable" type="button" disabled>Продажи скоро</button>
+            <a class="button button--red" href="https://perm.qtickets.events/271744-karaoke-reyv-2027">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
             <a class="text-link" href="https://vk.ru/karaokeraveperm">Следить за анонсом ВКонтакте <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
             <span class="event-stub-bars" aria-hidden="true"></span>
           </div>
@@ -287,7 +287,7 @@
           </a>
         </div>
         <div class="gallery-actions" data-reveal>
-          <a class="button button--small button--outline" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+          <a class="button button--small button--outline" href="https://perm.qtickets.events/271744-karaoke-reyv-2027">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
           <div class="report-links">
             <a class="text-link" href="https://vadimnikonov.wfolio.pro/disk/karaoke-rave-xl4hm3">Фотоотчёт Вадима Никонова <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
             <a class="text-link" href="https://koryakov.site/v/gallery/22-10-2026-karaoke-rave-rpz4jw/">Фотоотчёт от 22 октября <svg class="icon" aria-hidden="true"><use href="#external"/></svg></a>
@@ -305,17 +305,18 @@
         </div>
         <div class="booking-panel" data-reveal>
           <h3>Заказать Караоке Рейв</h3>
-          <form id="booking-form" aria-describedby="form-note" hidden>
-            <label>Имя <span aria-hidden="true">*</span><input name="name" autocomplete="name" maxlength="100" required></label>
+          <form id="booking-form" action="https://functions.yandexcloud.net/d4ec8ogs5jdsu2m1dadn" method="post" aria-describedby="form-note" hidden>
+            <input name="site" tabindex="-1" autocomplete="off" hidden>
+            <label>Имя <span aria-hidden="true">*</span><input name="name" autocomplete="name" maxlength="80" required></label>
             <label>Телефон <span aria-hidden="true">*</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="32" required></label>
             <label class="form-wide">Дата мероприятия<input name="date" type="date" autocomplete="off"></label>
             <label class="form-wide">Комментарий<textarea name="comment" rows="2" maxlength="1000" autocomplete="off"></textarea></label>
-            <p class="form-note form-wide" id="form-note">Подготовим черновик заявки в&nbsp;вашем почтовом приложении.</p>
-            <button class="button button--red" type="submit">Открыть письмо <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button>
+            <p class="form-note form-wide" id="form-note">Отправим заявку организатору в&nbsp;Telegram.</p>
+            <button class="button button--red" type="submit">Отправить заявку <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></button>
             <p class="form-note form-wide" id="form-status" role="status"></p>
           </form>
-          <noscript><p>Расскажите о вашем мероприятии в письме или по телефону.</p></noscript>
-          <a class="text-link booking-email" id="booking-email" href="mailto:stas.toropov2015@yandex.ru">stas.toropov2015@yandex.ru</a>
+          <noscript><p>Расскажите о вашем мероприятии по телефону <a href="tel:+79194459601">+7 (919) 445-96-01</a>.</p></noscript>
+          <a class="text-link booking-price" href="./assets/karaoke-rave-partners-priced.pdf" download="Karaoke-Rave-KP.pdf">Скачать КП с ценами (PDF) <svg class="icon" aria-hidden="true"><use href="#download"/></svg></a>
         </div>
       </div>
     </section>
@@ -333,9 +334,9 @@
         <h2 id="contacts-title">Стань частью<br>Караоке Рейв</h2>
       </div>
       <div class="actions" data-reveal>
-        <a class="button button--red" href="#afisha">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+        <a class="button button--red" href="https://perm.qtickets.events/271744-karaoke-reyv-2027">Купить билет <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
         <a class="button button--outline" href="#booking">Заказать на своё мероприятие</a>
-        <a class="button button--outline" href="./assets/karaoke-rave-partners.pdf" download="Karaoke-Rave-presentation.pdf">Для партнеров <svg class="icon" aria-hidden="true"><use href="#download"/></svg></a>
+        <a class="button button--outline" href="./assets/karaoke-rave-partners-priced.pdf" download="Karaoke-Rave-KP.pdf">Для партнеров <svg class="icon" aria-hidden="true"><use href="#download"/></svg></a>
       </div>
       <div class="footer-bottom" data-reveal>
         <a class="brand" href="#top" aria-label="Караоке Рейв — начало страницы"><img src="./assets/karaoke-rave-steel.svg" width="1069" height="803" alt=""></a>

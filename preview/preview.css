@@ -77,7 +77,6 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .button--red:hover { --button-fill: var(--ink); color: var(--night); }
 .button--outline { --button-line: #8f827e; }
 .button--outline:hover { --button-fill: var(--ink); --button-line: var(--ink); color: var(--night); }
-.button--unavailable { --button-fill: var(--panel); --button-line: var(--line); color: var(--muted); cursor: default; }
 .button--red:focus-visible { outline-color: var(--red); }
 .text-link { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; font-weight: 650; }
 .text-link:hover, .nav a:hover, .footer-bottom a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
@@ -237,7 +236,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .event-date > span { font: 400 clamp(2.85rem, 5.1vw, 5.25rem)/.95 var(--mono); letter-spacing: -.075em; }
 .event-date > span span { color: #a50910; }
 .event-date small { font-weight: 650; }
-.event-stub .button { --button-fill: #e7e7e7; --button-line: #b6b6b6; color: #3c3837; }
+.event-stub .button--red:hover { --button-fill: var(--night); color: white; }
 .event-stub .text-link { font-size: .9rem; line-height: 1.24; }
 .event-stub-bars { width: min(100%, 174px); height: 23px; opacity: .8; background: repeating-linear-gradient(90deg, var(--night) 0 2px, transparent 2px 4px, var(--night) 4px 5px, transparent 5px 8px, var(--night) 8px 11px, transparent 11px 14px, var(--night) 14px 15px, transparent 15px 16px); }
 .event-details dl > div { display: grid; grid-template-columns: minmax(70px, .55fr) 1fr; gap: 10px; padding-block: 8px; border-bottom: 1px solid var(--line); }
@@ -285,7 +284,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 #booking-form .button { grid-column: 1 / -1; justify-self: start; }
 .form-note { color: #493e3e; font-size: .875rem; }
 #form-status:empty { display: none; }
-.booking-email { margin-top: 8px; overflow-wrap: anywhere; font-size: .95rem; }
+.booking-price { margin-top: 8px; overflow-wrap: anywhere; font-size: .95rem; }
 
 .footer { padding-bottom: max(35px, env(safe-area-inset-bottom)); text-align: center; }
 .footer .section-heading { flex-direction: column; align-items: center; gap: 12px; margin-bottom: 26px; }
