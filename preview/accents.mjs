@@ -92,6 +92,49 @@ function createEqualizer(THREE, scene) {
   };
 }
 
+async function createWordmark(THREE, scene, image) {
+  const response = await fetch(image.src);
+  if (!response.ok) throw new Error('Could not load the wordmark');
+  const { paths, xml } = new THREE.SVGLoader().parse(await response.text());
+  const [left, top, width, height] = xml.getAttribute('viewBox').split(/\s+/).map(Number);
+  const depth = 64;
+  const scale = 3.1 / width;
+  const wordmark = new THREE.Group();
+  wordmark.scale.set(scale, -scale, scale);
+
+  const edge = new THREE.MeshStandardMaterial({
+    color: 0x57525b,
+    emissive: 0x252229,
+    emissiveIntensity: .55,
+    roughness: .34,
+    metalness: .53,
+  });
+  for (const path of paths) {
+    const geometry = new THREE.ExtrudeGeometry(path.toShapes(), {
+      depth,
+      bevelThickness: 4,
+      bevelSize: 3,
+      bevelSegments: 1,
+    });
+    geometry.translate(-left - width / 2, -top - height / 2, -depth / 2);
+    const face = new THREE.MeshBasicMaterial({ color: path.color, toneMapped: false });
+    wordmark.add(new THREE.Mesh(geometry, [face, edge]));
+  }
+
+  scene.add(wordmark);
+  for (const [color, power, x, y, z] of [[0xfff7ed, 30, -3, 3, 4], [0xff5c63, 18, 3, -1, -4]]) {
+    const light = new THREE.PointLight(color, power);
+    light.position.set(x, y, z);
+    scene.add(light);
+  }
+
+  let firstFrame;
+  return seconds => {
+    firstFrame ??= seconds;
+    wordmark.rotation.set(.07, -.17 + (seconds - firstFrame) * Math.PI * 2 / 13, -.025);
+  };
+}
+
 function observeAccent(element) {
   const canvas = element.querySelector('canvas');
   let visible = false;
@@ -102,16 +145,25 @@ function observeAccent(element) {
     started = true;
     const context = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
     if (!context) return;
-    const THREE = await import('./vendor/three-0.187.0.mjs?v=stage-pulse');
+    const THREE = await import('./vendor/three-0.187.0.mjs?v=wordmark');
     const renderer = new THREE.WebGLRenderer({ canvas, context, alpha: true });
     renderer.setClearColor(0, 0);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(36, 1, .1, 12);
-    const isTicket = element.dataset.accent === 'ticket';
-    camera.position.z = isTicket ? 4.55 : 3.8;
-    const animate = isTicket
-      ? createTicket(THREE, scene, element.closest('.events').querySelector('.event-date > span').textContent)
-      : createEqualizer(THREE, scene);
+    let animate;
+    switch (element.dataset.accent) {
+      case 'wordmark':
+        camera.position.z = 4.7;
+        animate = await createWordmark(THREE, scene, element.querySelector('img'));
+        break;
+      case 'ticket':
+        camera.position.z = 4.55;
+        animate = createTicket(THREE, scene, element.closest('.events').querySelector('.event-date > span').textContent);
+        break;
+      default:
+        camera.position.z = 3.8;
+        animate = createEqualizer(THREE, scene);
+    }
     let lost = false;
 
     function render(time) {

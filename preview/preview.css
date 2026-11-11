@@ -231,6 +231,9 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .scene-accent > .icon { width: 74%; height: auto; transition: opacity .24s ease; }
 .scene-accent[data-live] canvas { opacity: 1; }
 .scene-accent[data-live] > .icon { opacity: 0; }
+.scene-accent--wordmark { display: none; }
+.scene-accent--wordmark img { width: 83%; transition: opacity .24s ease; }
+.scene-accent--wordmark[data-live] img { opacity: 0; }
 .scene-accent--ticket { width: clamp(48px, 12vw, 158px); }
 .scene-accent--ticket > .icon { color: #a50910; transform: rotate(-13deg); }
 .scene-accent--equalizer { width: clamp(94px, 10vw, 132px); }
@@ -277,7 +280,15 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
 .report-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 
 .booking { position: relative; isolation: isolate; background: var(--paper); color: var(--ink); overflow: hidden; }
-.booking::before { content: ''; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse 65% 120% at 32% 100%, #481115, var(--night) 76%); clip-path: polygon(0 0, 56% 0, 51% 100%, 0 100%); }
+.booking-photo { position: absolute; z-index: -1; inset: 0 44% 0 0; background: var(--night); clip-path: polygon(0 0, 100% 0, 91.07% 100%, 0 100%); }
+.booking-photo img, .booking-photo::after { position: absolute; inset: 0; width: 100%; height: 100%; }
+.booking-photo img { object-fit: cover; object-position: center 39%; filter: grayscale(1); }
+.booking-photo::after {
+  content: '';
+  background:
+    linear-gradient(90deg, rgb(5 5 5 / .79) 8%, rgb(5 5 5 / .52) 63%, rgb(5 5 5 / .30)),
+    linear-gradient(0deg, rgb(5 5 5 / .76), rgb(5 5 5 / .26) 63%, transparent);
+}
 .booking-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .9fr); align-items: start; gap: var(--gap); }
 .booking-copy { container-type: inline-size; }
 .booking h2 { margin-bottom: 25px; font-size: min(4.35vw, 8.95cqi); line-height: 1.01; }
@@ -344,6 +355,7 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
   .header[data-menu-ready] .nav-toggle { display: grid; }
   .hero-stage::after { background: linear-gradient(180deg, rgb(11 10 10 / .3), rgb(11 10 10 / .12) 24%, rgb(11 10 10 / .65) 60%, var(--night)); }
   .hero-pulse { inset: clamp(36px, 12vw, 78px) 0 auto; width: 100%; height: clamp(185px, 54vw, 315px); mask-image: none; }
+  .scene-accent--wordmark { display: grid; position: absolute; top: clamp(64px, 10svh, 96px); inset-inline: 0; margin-inline: auto; width: clamp(144px, 51vw, 228px); pointer-events: none; filter: drop-shadow(0 9px 14px #000b); }
   .hero-inner { min-height: 100svh; padding-block: clamp(235px, 57vw, 365px) max(26px, env(safe-area-inset-bottom)); }
   .hero-title { font-size: clamp(1.75rem, 9.3vw, 3.75rem); }
   .hero-bottom { grid-template-columns: 1fr; gap: 17px; margin-top: 19px; }
@@ -375,8 +387,18 @@ mark { color: white; background: var(--red); padding: .015em .12em 0; }
   .gallery .section-heading { align-items: start; flex-direction: column; gap: 8px; }
   .gallery h2 { font-size: clamp(2.1rem, 8.4vw, 3.7rem); }
   .booking { background: var(--night); }
-  .booking::before { content: none; }
   .booking-grid { row-gap: 32px; }
+  .booking-photo {
+    position: relative;
+    inset: auto;
+    grid-area: 1 / 1;
+    align-self: stretch;
+    margin-block: calc(-1 * var(--section)) -25px;
+    margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left))) calc(-1 * max(var(--gutter), env(safe-area-inset-right)));
+    clip-path: none;
+  }
+  .booking-photo::after { background: linear-gradient(180deg, rgb(5 5 5 / .38), rgb(5 5 5 / .83) var(--section), rgb(5 5 5 / .84) 74%, var(--night)); }
+  .booking-copy { grid-area: 1 / 1; }
   .booking h2 { font-size: min(7.6vw, 8.95cqi); }
   .booking-panel { padding: 24px 0 0; border-top: 1px solid var(--line); color-scheme: dark; color: var(--ink); }
   #booking-form label span, #booking-form label:focus-within { color: var(--ink); }

@@ -16,11 +16,11 @@
   <link rel="icon" href="./assets/karaoke-rave-steel-mark.svg" type="image/svg+xml">
   <link rel="preload" href="./preview/inter-tight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./preview/type.css">
-  <link rel="stylesheet" href="./preview/preview.css?v=film-grain">
+  <link rel="stylesheet" href="./preview/preview.css?v=booking-photo-wordmark">
   <script src="./gallery.js?v=photo-report" defer></script>
   <script src="./preview/booking.js?v=telegram" defer></script>
-  <script type="module" src="./preview/accents.mjs?v=stage-pulse"></script>
-  <script type="module" src="./preview/stage-pulse.mjs"></script>
+  <script type="module" src="./preview/accents.mjs?v=wordmark"></script>
+  <script type="module" src="./preview/stage-pulse.mjs?v=wordmark"></script>
   <script src="./preview/motion.js?v=step-icons" defer></script>
 </head>
 <body id="top">
@@ -90,6 +90,10 @@
         <img src="./assets/hero-koryakov-144-1600.webp" srcset="./assets/hero-koryakov-144-1600.webp 1600w, ./assets/hero-koryakov-144-2400.webp 2400w" sizes="100vw" width="1600" height="1064" fetchpriority="high" alt="">
       </picture>
       <canvas class="hero-pulse" aria-hidden="true"></canvas>
+      <div class="scene-accent scene-accent--wordmark" data-accent="wordmark" aria-hidden="true">
+        <img src="./assets/karaoke-rave-steel-wordmark.svg" width="988" height="660" alt="" loading="lazy">
+        <canvas></canvas>
+      </div>
       <div class="hero-inner wrap">
         <h1 id="hero-title" class="hero-title">
           <span>Караоке Рейв</span>
@@ -299,6 +303,9 @@
 
     <section class="section booking" id="booking" aria-labelledby="booking-title">
       <div class="wrap booking-grid">
+        <div class="booking-photo" aria-hidden="true">
+          <img src="./assets/report/dsc-1065-thumb.webp" srcset="./assets/report/dsc-1065-thumb.webp 1000w, ./assets/report/dsc-1065.webp 1920w" sizes="(max-width: 680px) 100vw, 56vw" width="1000" height="666" loading="lazy" alt="">
+        </div>
         <div class="booking-copy" data-reveal="side">
           <h2 id="booking-title"><span>Хотите, чтобы пел</span><mark>весь ваш зал?</mark></h2>
           <p>Караоке Рейв можно заказать на&nbsp;корпоратив, фестиваль или частное мероприятие. Оркестр сыграет любимые песни ваших гостей, а&nbsp;текст на&nbsp;экране поможет всем подпевать.</p>

@@ -9,7 +9,7 @@ function canPlay() {
 async function playPulse() {
   await document.querySelector('.hero-stage img').decode();
   if (!canPlay()) return;
-  const THREE = await import('./vendor/three-0.187.0.mjs?v=stage-pulse');
+  const THREE = await import('./vendor/three-0.187.0.mjs?v=wordmark');
   if (!canPlay()) return;
 
   const context = canvas.getContext('webgl2', { alpha: true, antialias: false, powerPreference: 'low-power' });
