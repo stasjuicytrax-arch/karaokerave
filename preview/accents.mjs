@@ -92,37 +92,79 @@ function createEqualizer(THREE, scene) {
   };
 }
 
+function wordmarkEnvironment(THREE) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 128;
+  const context = canvas.getContext('2d');
+  const backdrop = context.createLinearGradient(0, 0, 0, canvas.height);
+  backdrop.addColorStop(0, '#777780');
+  backdrop.addColorStop(.55, '#292931');
+  backdrop.addColorStop(1, '#101014');
+  context.fillStyle = backdrop;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Broad reflections reveal the polished bevel as the letters rock.
+  for (const [x, y, width, height, color] of [
+    [73, 36, 52, 19, '#fff9ee'],
+    [174, 65, 28, 24, '#ffffff'],
+    [223, 30, 16, 23, '#d2e6ff'],
+  ]) {
+    context.save();
+    context.translate(x, y);
+    context.scale(width, height);
+    const light = context.createRadialGradient(0, 0, 0, 0, 0, 1);
+    light.addColorStop(0, color);
+    light.addColorStop(.52, color);
+    light.addColorStop(1, 'transparent');
+    context.fillStyle = light;
+    context.fillRect(-1, -1, 2, 2);
+    context.restore();
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.mapping = THREE.EquirectangularReflectionMapping;
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
 async function createWordmark(THREE, scene, image) {
   const response = await fetch(image.src);
   if (!response.ok) throw new Error('Could not load the wordmark');
   const { paths, xml } = new THREE.SVGLoader().parse(await response.text());
   const [left, top, width, height] = xml.getAttribute('viewBox').split(/\s+/).map(Number);
-  const depth = 64;
+  const depth = 57;
   const scale = 3.1 / width;
   const wordmark = new THREE.Group();
   wordmark.scale.set(scale, -scale, scale);
 
   const edge = new THREE.MeshStandardMaterial({
-    color: 0x57525b,
-    emissive: 0x252229,
-    emissiveIntensity: .55,
-    roughness: .34,
-    metalness: .53,
+    color: 0xb4aeb4,
+    roughness: .2,
+    metalness: .96,
   });
   for (const path of paths) {
     const geometry = new THREE.ExtrudeGeometry(path.toShapes(), {
       depth,
-      bevelThickness: 4,
-      bevelSize: 3,
-      bevelSegments: 1,
+      bevelThickness: 8,
+      bevelSize: 6,
+      bevelSegments: 2,
     });
     geometry.translate(-left - width / 2, -top - height / 2, -depth / 2);
-    const face = new THREE.MeshBasicMaterial({ color: path.color, toneMapped: false });
+    const face = new THREE.MeshStandardMaterial({
+      color: path.color,
+      roughness: .29,
+      metalness: .14,
+      emissive: path.color,
+      emissiveIntensity: .16,
+    });
     wordmark.add(new THREE.Mesh(geometry, [face, edge]));
   }
 
   scene.add(wordmark);
-  for (const [color, power, x, y, z] of [[0xfff7ed, 30, -3, 3, 4], [0xff5c63, 18, 3, -1, -4]]) {
+  scene.environment = wordmarkEnvironment(THREE);
+  scene.environmentIntensity = 1.2;
+  for (const [color, power, x, y, z] of [[0xfff9f2, 45, -2.5, 3, 5], [0xdce8ff, 16, 4, 1, 3]]) {
     const light = new THREE.PointLight(color, power);
     light.position.set(x, y, z);
     scene.add(light);
@@ -131,7 +173,8 @@ async function createWordmark(THREE, scene, image) {
   let firstFrame;
   return seconds => {
     firstFrame ??= seconds;
-    wordmark.rotation.set(.07, -.17 + (seconds - firstFrame) * Math.PI * 2 / 13, -.025);
+    const phase = (seconds - firstFrame) * Math.PI * 2 / 9.5;
+    wordmark.rotation.set(.06 + .04 * Math.cos(phase), .42 * Math.sin(phase - .4), -.025);
   };
 }
 
@@ -156,10 +199,12 @@ function observeAccent(element) {
         camera.position.z = 4.7;
         animate = await createWordmark(THREE, scene, element.querySelector('img'));
         break;
-      case 'ticket':
+      case 'ticket': {
         camera.position.z = 4.55;
-        animate = createTicket(THREE, scene, element.closest('.events').querySelector('.event-date > span').textContent);
+        const [, month, day] = element.closest('.events').querySelector('.ticket-date').dateTime.split('-');
+        animate = createTicket(THREE, scene, `${day}.${month}`);
         break;
+      }
       default:
         camera.position.z = 3.8;
         animate = createEqualizer(THREE, scene);
